@@ -1,0 +1,596 @@
+{
+  "Target": "container",
+  "Kernel": {
+    "Version": [
+      6,
+      6,
+      0
+    ],
+    "Release": "6.6.0-amd64-desktop",
+    "CompileDate": "Fri Mar 20 18:17:10 CST 2026",
+    "Arch": "x86_64",
+    "Modules": [
+      "nf_conntrack_netlink",
+      "veth",
+      "btusb",
+      "btrtl",
+      "btintel",
+      "btbcm",
+      "btmtk",
+      "bnep",
+      "snd_seq_dummy",
+      "snd_seq_midi",
+      "snd_hrtimer",
+      "snd_seq_midi_event",
+      "snd_seq",
+      "xt_conntrack",
+      "xt_MASQUERADE",
+      "bridge",
+      "stp",
+      "llc",
+      "xfrm_user",
+      "xfrm_algo",
+      "xt_set",
+      "ip_set",
+      "st",
+      "nft_chain_nat",
+      "nf_nat",
+      "nf_conntrack",
+      "nf_defrag_ipv6",
+      "nf_defrag_ipv4",
+      "xt_addrtype",
+      "nft_compat",
+      "bluetooth",
+      "nf_tables",
+      "libcrc32c",
+      "rfkill",
+      "vfs_monitor",
+      "qrtr",
+      "binfmt_misc",
+      "snd_ens1371",
+      "snd_ac97_codec",
+      "gameport",
+      "snd_rawmidi",
+      "intel_rapl_msr",
+      "snd_seq_device",
+      "intel_rapl_common",
+      "ac97_bus",
+      "snd_pcm",
+      "vmw_balloon",
+      "snd_timer",
+      "snd",
+      "soundcore",
+      "pcspkr",
+      "vmw_vmci",
+      "intel_agp",
+      "ac",
+      "intel_gtt",
+      "joydev",
+      "input_leds",
+      "bfq",
+      "mac_hid",
+      "serio_raw",
+      "sg",
+      "uos_touchpad_expand",
+      "parport_pc",
+      "ppdev",
+      "lp",
+      "parport",
+      "efi_pstore",
+      "fuse",
+      "loop",
+      "nfnetlink",
+      "dmi_sysfs",
+      "ip_tables",
+      "x_tables",
+      "autofs4",
+      "hid_generic",
+      "usbmouse",
+      "usbhid",
+      "hid",
+      "crct10dif_pclmul",
+      "crc32_pclmul",
+      "polyval_clmulni",
+      "polyval_generic",
+      "ghash_clmulni_intel",
+      "sha512_ssse3",
+      "sha256_ssse3",
+      "vmwgfx",
+      "sr_mod",
+      "sha1_ssse3",
+      "cdrom",
+      "mptspi",
+      "drm_ttm_helper",
+      "aesni_intel",
+      "ata_generic",
+      "mptscsih",
+      "ttm",
+      "mptbase",
+      "drm_kms_helper",
+      "pata_acpi",
+      "uhci_hcd",
+      "crypto_simd",
+      "ehci_pci",
+      "cryptd",
+      "drm",
+      "psmouse",
+      "ehci_hcd",
+      "scsi_transport_spi",
+      "i2c_piix4",
+      "e1000",
+      "agpgart",
+      "ata_piix",
+      "button"
+    ],
+    "Cmdline": "BOOT_IMAGE=/boot/vmlinuz-6.6.0-amd64-desktop root=UUID=828cb202-994f-4326-839a-88699339bd17 ostree=auto usec=1 video=efifb:nobgrt splash quiet loglevel=0 locales=zh_CN.UTF-8 DEEPIN_GFXMODE=1,1152x864,1024x768 efi-pstore.pstore_disable=N luks.crypttab=n libahci.ignore_sss=1",
+    "ConfigFlags": {
+      "CONFIG_BPF_JIT": true,
+      "CONFIG_BPF_SYSCALL": true,
+      "CONFIG_CGROUP_DEVICE": true,
+      "CONFIG_CGROUP_PIDS": true,
+      "CONFIG_CHECKPOINT_RESTORE": true,
+      "CONFIG_FHANDLE": true,
+      "CONFIG_IKCONFIG": true,
+      "CONFIG_IKCONFIG_PROC": true,
+      "CONFIG_IPC_NS": true,
+      "CONFIG_KEYS": true,
+      "CONFIG_KEY_DH_OPERATIONS": true,
+      "CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY": false,
+      "CONFIG_MEMCG": true,
+      "CONFIG_MODULES": true,
+      "CONFIG_MODULE_SIG": true,
+      "CONFIG_MODULE_SIG_FORCE": false,
+      "CONFIG_NETFILTER_XT_MATCH_CONNTRACK": true,
+      "CONFIG_NET_NS": true,
+      "CONFIG_NF_TABLES": true,
+      "CONFIG_OVERLAY_FS": true,
+      "CONFIG_PID_NS": true,
+      "CONFIG_POSIX_MQUEUE": true,
+      "CONFIG_SECURITY_APPARMOR": true,
+      "CONFIG_SECURITY_PATH": true,
+      "CONFIG_SECURITY_SELINUX": true,
+      "CONFIG_SECURITY_YAMA": true,
+      "CONFIG_SYSVIPC": true,
+      "CONFIG_USERFAULTFD": true,
+      "CONFIG_USER_NS": true,
+      "CONFIG_UTS_NS": true,
+      "CONFIG_VIRTIO": true
+    }
+  },
+  "Runtime": {
+    "Type": 1,
+    "Version": "",
+    "RuncVersion": "",
+    "InitCmdline": "sleep 3600",
+    "InitExe": "/usr/bin/sleep",
+    "RuntimeSockets": null,
+    "DockerSocket": false,
+    "StorageDriver": "overlay2",
+    "HostPath": "/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/17/fs",
+    "EnvLeaks": {}
+  },
+  "Namespace": {
+    "Entries": {
+      "cgroup": {
+        "Name": "cgroup",
+        "Inode": "cgroup:[4026533130]",
+        "InitInode": "cgroup:[4026533130]",
+        "Available": true
+      },
+      "ipc": {
+        "Name": "ipc",
+        "Inode": "ipc:[4026533128]",
+        "InitInode": "ipc:[4026533128]",
+        "Available": true
+      },
+      "mnt": {
+        "Name": "mnt",
+        "Inode": "mnt:[4026533126]",
+        "InitInode": "mnt:[4026533126]",
+        "Available": true
+      },
+      "net": {
+        "Name": "net",
+        "Inode": "net:[4026533131]",
+        "InitInode": "net:[4026533131]",
+        "Available": true
+      },
+      "pid": {
+        "Name": "pid",
+        "Inode": "pid:[4026533129]",
+        "InitInode": "pid:[4026533129]",
+        "Available": true
+      },
+      "user": {
+        "Name": "user",
+        "Inode": "user:[4026531837]",
+        "InitInode": "user:[4026531837]",
+        "Available": true
+      },
+      "uts": {
+        "Name": "uts",
+        "Inode": "uts:[4026533127]",
+        "InitInode": "uts:[4026533127]",
+        "Available": true
+      }
+    },
+    "UserNsCreated": false
+  },
+  "Cgroup": {
+    "Version": 2,
+    "Subsystems": {
+      "unified": {
+        "Name": "unified",
+        "MountPath": "/sys/fs/cgroup",
+        "SelfPath": "/",
+        "ReleaseAgentExists": false,
+        "ReleaseAgentWritable": false,
+        "NotifyOnReleaseWritable": false,
+        "CgroupProcsWritable": false,
+        "SubDirs": null,
+        "SubtreeControlWritable": false
+      }
+    },
+    "DevicesAllowWritable": false,
+    "SubtreeControlWritable": false,
+    "UnifiedPath": "/sys/fs/cgroup"
+  },
+  "Capability": {
+    "Effective": 2818844155,
+    "Bounding": 2818844155,
+    "Inheritable": 0,
+    "Permitted": 2818844155,
+    "IsPrivileged": false,
+    "ActiveNames": null,
+    "DangerousCaps": null,
+    "UID": 0,
+    "GID": 0,
+    "EUID": 0
+  },
+  "Filesystem": {
+    "Mounts": [
+      {
+        "Source": "overlay",
+        "Target": "/",
+        "FSType": "overlay",
+        "Options": "rw,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/17/fs",
+        "WorkDir": "/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/17/work",
+        "LowerDirs": [
+          "/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/16/fs",
+          "/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/13/fs"
+        ]
+      },
+      {
+        "Source": "proc",
+        "Target": "/proc",
+        "FSType": "proc",
+        "Options": "rw,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/dev",
+        "FSType": "tmpfs",
+        "Options": "rw,nosuid",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "devpts",
+        "Target": "/dev/pts",
+        "FSType": "devpts",
+        "Options": "rw,nosuid,noexec,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "sysfs",
+        "Target": "/sys",
+        "FSType": "sysfs",
+        "Options": "ro,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "cgroup",
+        "Target": "/sys/fs/cgroup",
+        "FSType": "cgroup2",
+        "Options": "ro,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "mqueue",
+        "Target": "/dev/mqueue",
+        "FSType": "mqueue",
+        "Options": "rw,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "shm",
+        "Target": "/dev/shm",
+        "FSType": "tmpfs",
+        "Options": "rw,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "/dev/sda5",
+        "Target": "/etc/resolv.conf",
+        "FSType": "ext4",
+        "Options": "rw,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "/dev/sda5",
+        "Target": "/etc/hostname",
+        "FSType": "ext4",
+        "Options": "rw,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "/dev/sda5",
+        "Target": "/etc/hosts",
+        "FSType": "ext4",
+        "Options": "rw,relatime",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "proc",
+        "Target": "/proc/bus",
+        "FSType": "proc",
+        "Options": "ro,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "proc",
+        "Target": "/proc/fs",
+        "FSType": "proc",
+        "Options": "ro,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "proc",
+        "Target": "/proc/irq",
+        "FSType": "proc",
+        "Options": "ro,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "proc",
+        "Target": "/proc/sys",
+        "FSType": "proc",
+        "Options": "ro,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "proc",
+        "Target": "/proc/sysrq-trigger",
+        "FSType": "proc",
+        "Options": "ro,nosuid,nodev,noexec,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/proc/acpi",
+        "FSType": "tmpfs",
+        "Options": "ro,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/proc/asound",
+        "FSType": "tmpfs",
+        "Options": "ro,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/proc/interrupts",
+        "FSType": "tmpfs",
+        "Options": "rw,nosuid",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/proc/kcore",
+        "FSType": "tmpfs",
+        "Options": "rw,nosuid",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/proc/keys",
+        "FSType": "tmpfs",
+        "Options": "rw,nosuid",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/proc/timer_list",
+        "FSType": "tmpfs",
+        "Options": "rw,nosuid",
+        "IsReadOnly": false,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      },
+      {
+        "Source": "tmpfs",
+        "Target": "/sys/firmware",
+        "FSType": "tmpfs",
+        "Options": "ro,relatime",
+        "IsReadOnly": true,
+        "UpperDir": "",
+        "WorkDir": "",
+        "LowerDirs": null
+      }
+    ],
+    "BlockDevices": null,
+    "DangerousDevices": null,
+    "SuidBinaries": [
+      {
+        "Path": "/usr/bin/chfn",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      },
+      {
+        "Path": "/usr/bin/chsh",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      },
+      {
+        "Path": "/usr/bin/gpasswd",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      },
+      {
+        "Path": "/usr/bin/mount",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      },
+      {
+        "Path": "/usr/bin/newgrp",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      },
+      {
+        "Path": "/usr/bin/passwd",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      },
+      {
+        "Path": "/usr/bin/su",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      },
+      {
+        "Path": "/usr/bin/umount",
+        "IsExploitable": false,
+        "ExploitMethod": ""
+      }
+    ],
+    "WritablePaths": [
+      "/etc/passwd",
+      "/etc/shadow"
+    ],
+    "HostRootMounted": false
+  },
+  "Proc": {
+    "CorePatternWritable": false,
+    "CorePatternValue": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h",
+    "ModprobeWritable": false,
+    "ModprobeValue": "/sbin/modprobe",
+    "HotplugWritable": false,
+    "SysrqWritable": false,
+    "Proc1RootReadable": true,
+    "Proc1RootContents": null,
+    "FdLeaks": null,
+    "VisibleHostPids": 3
+  },
+  "Security": {
+    "SeccompMode": 2,
+    "AppArmorProfile": "",
+    "SELinuxMode": "Disabled",
+    "ReadOnlyRootfs": false,
+    "NoNewPrivs": false,
+    "SyscallReachable": {
+      "bpf": false,
+      "keyctl": false,
+      "mount": false,
+      "ptrace": true,
+      "unshare": false,
+      "userfaultfd": false
+    },
+    "SyscallBlocked": {
+      "bpf": true,
+      "keyctl": true,
+      "mount": true,
+      "ptrace": true,
+      "unshare": true,
+      "userfaultfd": true
+    }
+  },
+  "Network": {
+    "Mode": "bridge",
+    "Interfaces": [
+      {
+        "Name": "lo",
+        "IPs": [
+          "127.0.0.1/8",
+          "::1/128"
+        ],
+        "MAC": ""
+      },
+      {
+        "Name": "eth0",
+        "IPs": [
+          "172.17.0.2/16"
+        ],
+        "MAC": "5a:ad:f8:b1:51:f8"
+      }
+    ],
+    "ListeningPorts": null,
+    "GatewayIP": "172.17.0.1",
+    "ReachableServices": null,
+    "K8sTokenFound": false,
+    "K8sAPIServer": ""
+  }
+}

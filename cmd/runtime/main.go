@@ -9,31 +9,21 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		printUsage()
+		fmt.Println("Usage:")
+		fmt.Println("  sek collect --target <host|container> [-o output.json]")
 		os.Exit(1)
 	}
 
 	switch os.Args[1] {
 	case "collect":
 		cmdCollect()
-	case "analyze":
-		cmdAnalyze()
 	default:
-		printUsage()
+		fmt.Println("unknown command")
 		os.Exit(1)
 	}
 }
 
-func printUsage() {
-	fmt.Println("sandbox-escape-kit (sek)")
-	fmt.Println()
-	fmt.Println("Usage:")
-	fmt.Println("  sek collect --target <host|container> [-o output.json]")
-	fmt.Println("  sek analyze <json...>")
-}
-
 func cmdCollect() {
-	// 解析 --target 参数
 	target := ""
 	outputPath := ""
 
@@ -42,7 +32,7 @@ func cmdCollect() {
 		case "--target":
 			if i+1 < len(os.Args) {
 				target = os.Args[i+1]
-				i++ // 跳过值
+				i++
 			}
 		case "-o":
 			if i+1 < len(os.Args) {
@@ -66,17 +56,9 @@ func cmdCollect() {
 	}
 
 	if outputPath != "" {
-		if err := os.WriteFile(outputPath, data, 0644); err != nil {
-			fmt.Fprintf(os.Stderr, "write error: %v\n", err)
-			os.Exit(1)
-		}
+		os.WriteFile(outputPath, data, 0644)
 		fmt.Fprintf(os.Stderr, "saved to %s\n", outputPath)
 	} else {
 		fmt.Println(string(data))
 	}
-}
-
-func cmdAnalyze() {
-	// 后面再写
-	fmt.Println("analyze: not implemented yet")
 }

@@ -12,6 +12,45 @@ import (
 	"syscall"
 )
 
+var relevantConfigKeys = []string{
+	"CONFIG_USER_NS",
+	"CONFIG_USER_NS_UNPRIVILEGED",
+	"CONFIG_OVERLAY_FS",
+	"CONFIG_BPF_SYSCALL",
+	"CONFIG_BPF_JIT",
+	"CONFIG_SECURITY_YAMA",
+	"CONFIG_SECURITY_APPARMOR",
+	"CONFIG_SECURITY_SELINUX",
+	"CONFIG_NETFILTER_XT_MATCH_CONNTRACK",
+	"CONFIG_NF_TABLES",
+	"CONFIG_NET_NS",
+	"CONFIG_PID_NS",
+	"CONFIG_IPC_NS",
+	"CONFIG_UTS_NS",
+	"CONFIG_CGROUP_NS",
+	"CONFIG_MEMCG",
+	"CONFIG_CGROUP_DEVICE",
+	"CONFIG_CGROUP_PIDS",
+	"CONFIG_IKCONFIG",
+	"CONFIG_IKCONFIG_PROC",
+	"CONFIG_MODULE_SIG",
+	"CONFIG_MODULE_SIG_FORCE",
+	"CONFIG_MODULES",
+	"CONFIG_SYSVIPC",
+	"CONFIG_CHECKPOINT_RESTORE",
+	"CONFIG_USERFAULTFD",
+	"CONFIG_FHANDLE",
+	"CONFIG_OPEN_BY_HANDLE_AT",
+	"CONFIG_POSIX_MQUEUE",
+	"CONFIG_KEYS",
+	"CONFIG_KEY_DH_OPERATIONS",
+	"CONFIG_FUSE",
+	"CONFIG_VIRTIO",
+	"CONFIG_SECURITY_PATH",
+	"CONFIG_LOCKDOWN_LSM",
+	"CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY",
+}
+
 // collectKernel 采集 Layer 1 内核层信息
 // 所有后续分析的基石: CVE 匹配、攻击面判定都从这里开始
 func collectKernel() KernelInfo {
@@ -158,15 +197,23 @@ func readCmdline() string {
 //  2. /boot/config-$(uname -r) — 可能不存在或和运行中的内核不匹配
 //  3. 都没有 → ConfigFlags 留空, Analyze 阶段基于版本号做保守估计
 func loadConfigFlags(k *KernelInfo) {
-	// 方法1: /proc/config.gz (大多数发行版启用 CONFIG_IKCONFIG_PROC)
+	allFlags := make(map[string]bool)
+
+	// 先读取全部配置到临时 map
 	if data, err := readGzipFile("/proc/config.gz"); err == nil {
-		parseConfigData(data, k)
-		return
+		parseConfigData(data, &allFlags)
+	} else {
+		bootConfig := fmt.Sprintf("/boot/config-%s", k.Release)
+		if data, err := os.ReadFile(bootConfig); err == nil {
+			parseConfigData(string(data), &allFlags)
+		}
 	}
-	// 方法2: /boot/config-* (容器里通常没有 /boot)
-	bootConfig := fmt.Sprintf("/boot/config-%s", k.Release)
-	if data, err := os.ReadFile(bootConfig); err == nil {
-		parseConfigData(string(data), k)
+
+	// 只保留攻击相关的 key
+	for _, key := range relevantConfigKeys {
+		if val, ok := allFlags[key]; ok {
+			k.ConfigFlags[key] = val
+		}
 	}
 }
 
@@ -201,7 +248,7 @@ func readGzipFile(path string) (string, error) {
 //
 //	=y 和 =m 都表示"内核支持这个功能"
 //	=n 或 "is not set" 表示"不可用"
-func parseConfigData(data string, k *KernelInfo) {
+func parseConfigData(data string, flags *map[string]bool) {
 	scanner := bufio.NewScanner(strings.NewReader(data))
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
@@ -209,14 +256,13 @@ func parseConfigData(data string, k *KernelInfo) {
 		if strings.HasPrefix(line, "CONFIG_") {
 			parts := strings.SplitN(line, "=", 2)
 			if len(parts) == 2 {
-				k.ConfigFlags[parts[0]] = (parts[1] == "y" || parts[1] == "m")
+				(*flags)[parts[0]] = (parts[1] == "y" || parts[1] == "m")
 			}
 		} else if strings.HasPrefix(line, "# CONFIG_") &&
 			strings.HasSuffix(line, "is not set") {
-			// "# CONFIG_XXX is not set" → 明确禁用
 			key := strings.TrimPrefix(line, "# ")
 			key = strings.TrimSuffix(key, " is not set")
-			k.ConfigFlags[key] = false
+			(*flags)[key] = false
 		}
 	}
 }

@@ -1,0 +1,390 @@
+{
+  "Target": "host",
+  "Kernel": {
+    "Version": [
+      6,
+      6,
+      0
+    ],
+    "Release": "6.6.0-amd64-desktop",
+    "CompileDate": "Fri Mar 20 18:17:10 CST 2026",
+    "Arch": "x86_64",
+    "Modules": [
+      "nf_conntrack_netlink",
+      "veth",
+      "btusb",
+      "btrtl",
+      "btintel",
+      "btbcm",
+      "btmtk",
+      "bnep",
+      "snd_seq_dummy",
+      "snd_seq_midi",
+      "snd_hrtimer",
+      "snd_seq_midi_event",
+      "snd_seq",
+      "xt_conntrack",
+      "xt_MASQUERADE",
+      "bridge",
+      "stp",
+      "llc",
+      "xfrm_user",
+      "xfrm_algo",
+      "xt_set",
+      "ip_set",
+      "st",
+      "nft_chain_nat",
+      "nf_nat",
+      "nf_conntrack",
+      "nf_defrag_ipv6",
+      "nf_defrag_ipv4",
+      "xt_addrtype",
+      "nft_compat",
+      "bluetooth",
+      "nf_tables",
+      "libcrc32c",
+      "rfkill",
+      "vfs_monitor",
+      "qrtr",
+      "binfmt_misc",
+      "snd_ens1371",
+      "snd_ac97_codec",
+      "gameport",
+      "snd_rawmidi",
+      "intel_rapl_msr",
+      "snd_seq_device",
+      "intel_rapl_common",
+      "ac97_bus",
+      "snd_pcm",
+      "vmw_balloon",
+      "snd_timer",
+      "snd",
+      "soundcore",
+      "pcspkr",
+      "vmw_vmci",
+      "intel_agp",
+      "ac",
+      "intel_gtt",
+      "joydev",
+      "input_leds",
+      "bfq",
+      "mac_hid",
+      "serio_raw",
+      "sg",
+      "uos_touchpad_expand",
+      "parport_pc",
+      "ppdev",
+      "lp",
+      "parport",
+      "efi_pstore",
+      "fuse",
+      "loop",
+      "nfnetlink",
+      "dmi_sysfs",
+      "ip_tables",
+      "x_tables",
+      "autofs4",
+      "hid_generic",
+      "usbmouse",
+      "usbhid",
+      "hid",
+      "crct10dif_pclmul",
+      "crc32_pclmul",
+      "polyval_clmulni",
+      "polyval_generic",
+      "ghash_clmulni_intel",
+      "sha512_ssse3",
+      "sha256_ssse3",
+      "vmwgfx",
+      "sr_mod",
+      "sha1_ssse3",
+      "cdrom",
+      "mptspi",
+      "drm_ttm_helper",
+      "aesni_intel",
+      "ata_generic",
+      "mptscsih",
+      "ttm",
+      "mptbase",
+      "drm_kms_helper",
+      "pata_acpi",
+      "uhci_hcd",
+      "crypto_simd",
+      "ehci_pci",
+      "cryptd",
+      "drm",
+      "psmouse",
+      "ehci_hcd",
+      "scsi_transport_spi",
+      "i2c_piix4",
+      "e1000",
+      "agpgart",
+      "ata_piix",
+      "button"
+    ],
+    "Cmdline": "BOOT_IMAGE=/boot/vmlinuz-6.6.0-amd64-desktop root=UUID=828cb202-994f-4326-839a-88699339bd17 ostree=auto usec=1 video=efifb:nobgrt splash quiet loglevel=0 locales=zh_CN.UTF-8 DEEPIN_GFXMODE=1,1152x864,1024x768 efi-pstore.pstore_disable=N luks.crypttab=n libahci.ignore_sss=1",
+    "ConfigFlags": {
+      "CONFIG_BPF_JIT": true,
+      "CONFIG_BPF_SYSCALL": true,
+      "CONFIG_CGROUP_DEVICE": true,
+      "CONFIG_CGROUP_PIDS": true,
+      "CONFIG_CHECKPOINT_RESTORE": true,
+      "CONFIG_FHANDLE": true,
+      "CONFIG_IKCONFIG": true,
+      "CONFIG_IKCONFIG_PROC": true,
+      "CONFIG_IPC_NS": true,
+      "CONFIG_KEYS": true,
+      "CONFIG_KEY_DH_OPERATIONS": true,
+      "CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY": false,
+      "CONFIG_MEMCG": true,
+      "CONFIG_MODULES": true,
+      "CONFIG_MODULE_SIG": true,
+      "CONFIG_MODULE_SIG_FORCE": false,
+      "CONFIG_NETFILTER_XT_MATCH_CONNTRACK": true,
+      "CONFIG_NET_NS": true,
+      "CONFIG_NF_TABLES": true,
+      "CONFIG_OVERLAY_FS": true,
+      "CONFIG_PID_NS": true,
+      "CONFIG_POSIX_MQUEUE": true,
+      "CONFIG_SECURITY_APPARMOR": true,
+      "CONFIG_SECURITY_PATH": true,
+      "CONFIG_SECURITY_SELINUX": true,
+      "CONFIG_SECURITY_YAMA": true,
+      "CONFIG_SYSVIPC": true,
+      "CONFIG_USERFAULTFD": true,
+      "CONFIG_USER_NS": true,
+      "CONFIG_UTS_NS": true,
+      "CONFIG_VIRTIO": true
+    }
+  },
+  "Runtime": {
+    "Type": 0,
+    "Version": "",
+    "RuncVersion": "1.3.5",
+    "InitCmdline": "/sbin/init splash",
+    "InitExe": "",
+    "RuntimeSockets": [
+      "/var/run/docker.sock",
+      "/run/docker.sock",
+      "/var/run/containerd/containerd.sock",
+      "/run/containerd/containerd.sock"
+    ],
+    "DockerSocket": true,
+    "StorageDriver": "overlay2",
+    "HostPath": "/root/persistent/overlay/data/layer-eb19dc7a30842ce1/usr",
+    "EnvLeaks": {}
+  },
+  "Namespace": {
+    "Entries": {
+      "cgroup": {
+        "Name": "cgroup",
+        "Inode": "cgroup:[4026531835]",
+        "InitInode": "cgroup:[4026531835]",
+        "Available": true
+      },
+      "ipc": {
+        "Name": "ipc",
+        "Inode": "ipc:[4026531839]",
+        "InitInode": "ipc:[4026531839]",
+        "Available": true
+      },
+      "mnt": {
+        "Name": "mnt",
+        "Inode": "mnt:[4026531841]",
+        "InitInode": "mnt:[4026531841]",
+        "Available": true
+      },
+      "net": {
+        "Name": "net",
+        "Inode": "net:[4026531840]",
+        "InitInode": "net:[4026531840]",
+        "Available": true
+      },
+      "pid": {
+        "Name": "pid",
+        "Inode": "pid:[4026531836]",
+        "InitInode": "pid:[4026531836]",
+        "Available": true
+      },
+      "user": {
+        "Name": "user",
+        "Inode": "user:[4026531837]",
+        "InitInode": "user:[4026531837]",
+        "Available": true
+      },
+      "uts": {
+        "Name": "uts",
+        "Inode": "uts:[4026531838]",
+        "InitInode": "uts:[4026531838]",
+        "Available": true
+      }
+    },
+    "UserNsCreated": false
+  },
+  "Cgroup": {
+    "Version": 2,
+    "Subsystems": {
+      "unified": {
+        "Name": "unified",
+        "MountPath": "/sys/fs/cgroup",
+        "SelfPath": "/user.slice/user-1000.slice/user@1000.service/app.slice/dde-file-manager.service",
+        "ReleaseAgentExists": false,
+        "ReleaseAgentWritable": false,
+        "NotifyOnReleaseWritable": false,
+        "CgroupProcsWritable": true,
+        "SubDirs": null,
+        "SubtreeControlWritable": true
+      }
+    },
+    "DevicesAllowWritable": false,
+    "SubtreeControlWritable": true,
+    "UnifiedPath": "/sys/fs/cgroup"
+  },
+  "Capability": {
+    "Effective": 0,
+    "Bounding": 2199023255551,
+    "Inheritable": 0,
+    "Permitted": 0,
+    "IsPrivileged": false,
+    "ActiveNames": null,
+    "DangerousCaps": null,
+    "UID": 1000,
+    "GID": 1000,
+    "EUID": 1000
+  },
+  "Filesystem": {
+    "Mounts": null,
+    "BlockDevices": null,
+    "DangerousDevices": null,
+    "SuidBinaries": null,
+    "WritablePaths": null,
+    "HostRootMounted": false
+  },
+  "Proc": {
+    "CorePatternWritable": false,
+    "CorePatternValue": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h",
+    "ModprobeWritable": false,
+    "ModprobeValue": "/sbin/modprobe",
+    "HotplugWritable": false,
+    "SysrqWritable": false,
+    "Proc1RootReadable": false,
+    "Proc1RootContents": null,
+    "FdLeaks": null,
+    "VisibleHostPids": 354
+  },
+  "Security": {
+    "SeccompMode": 0,
+    "AppArmorProfile": "",
+    "SELinuxMode": "Disabled",
+    "ReadOnlyRootfs": true,
+    "NoNewPrivs": false,
+    "SyscallReachable": {
+      "bpf": true,
+      "keyctl": true,
+      "mount": true,
+      "ptrace": true,
+      "unshare": false,
+      "userfaultfd": false
+    },
+    "SyscallBlocked": {
+      "bpf": true,
+      "keyctl": true,
+      "mount": true,
+      "ptrace": true,
+      "unshare": true,
+      "userfaultfd": true
+    }
+  },
+  "Network": {
+    "Mode": "host",
+    "Interfaces": [
+      {
+        "Name": "lo",
+        "IPs": [
+          "127.0.0.1/8",
+          "::1/128"
+        ],
+        "MAC": ""
+      },
+      {
+        "Name": "ens33",
+        "IPs": [
+          "172.31.88.138/24",
+          "fe80::8fd5:c71e:7f71:3a6e/64"
+        ],
+        "MAC": "00:0c:29:83:fa:79"
+      },
+      {
+        "Name": "docker0",
+        "IPs": [
+          "172.17.0.1/16",
+          "fe80::5021:baff:fe23:629d/64"
+        ],
+        "MAC": "52:21:ba:23:62:9d"
+      },
+      {
+        "Name": "veth79fbf24",
+        "IPs": [
+          "fe80::58aa:5eff:fe74:31f5/64"
+        ],
+        "MAC": "5a:aa:5e:74:31:f5"
+      }
+    ],
+    "ListeningPorts": [
+      {
+        "Protocol": "tcp",
+        "Port": 19810,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 2080,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 2081,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 631,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 47614,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 2080,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 40658,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 19810,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 38868,
+        "Addr": "0.0.0.0"
+      },
+      {
+        "Protocol": "tcp",
+        "Port": 22,
+        "Addr": "0.0.0.0"
+      }
+    ],
+    "GatewayIP": "172.31.88.2",
+    "ReachableServices": null,
+    "K8sTokenFound": false,
+    "K8sAPIServer": ""
+  }
+}

@@ -6,6 +6,7 @@ package recon
 
 type ReconResult struct {
 	// 每一种info在这里都代表了一类的攻击面
+	Target     string
 	Kernel     KernelInfo
 	Runtime    RuntimeInfo
 	Namespace  NamespaceInfo
@@ -66,24 +67,23 @@ type RuntimeInfo struct {
 // ============================================================
 // Layer 3: Namespace 隔离
 // 攻击意义: 共享 namespace = 直接攻击宿主
-//   pid 共享 → ptrace 宿主进程
-//   mnt 共享 → 直接写宿主文件
-//   net 共享 → 访问宿主 localhost 服务
+//
+//	pid 共享 → ptrace 宿主进程
+//	mnt 共享 → 直接写宿主文件
+//	net 共享 → 访问宿主 localhost 服务
+//
 // ============================================================
-
+// NsEntry 只存原始数据, 不做任何判断
 type NsEntry struct {
-	Name      string // "pid", "net", "mnt", "user", "cgroup", "ipc", "uts"
-	SelfInode string // /proc/self/ns/X 的 inode
-	InitInode string // /proc/1/ns/X 的 inode
-	IsShared  bool   // self == init, 即和宿主共享
-	Available bool   // 内核是否支持这个 ns
+	Name      string // "pid", "net", ...
+	Inode     string // /proc/self/ns/X 的 inode (当前进程)
+	InitInode string // /proc/1/ns/X 的 inode (PID 1)
+	Available bool   // 内核是否支持这个 namespace
 }
 
 type NamespaceInfo struct {
-	Entries            map[string]NsEntry
-	SharedNamespaces   []string // 和宿主共享的 ns 列表 — 高危
-	IsolatedNamespaces []string // 独立的 ns 列表
-	UserNsCreated      bool     // 能否 unshare 创建新 user namespace — CVE-2022-0492 需要
+	Entries       map[string]NsEntry // 采集到的 namespace 原始数据
+	UserNsCreated bool               // 能否创建新 user namespace
 }
 
 // ============================================================
@@ -93,6 +93,24 @@ type NamespaceInfo struct {
 //   v2 没有 release_agent, 逃逸路径不同
 // ============================================================
 
+//type CgSubsystem struct {
+//	Name                    string   // "memory", "cpu", "pids" 等
+//	MountPath               string   // /sys/fs/cgroup/memory
+//	SelfPath                string   // 容器在该子系统下的路径
+//	ReleaseAgentExists      bool     // release_agent 文件是否存在
+//	ReleaseAgentWritable    bool     // 能否写入 release_agent
+//	NotifyOnReleaseWritable bool     // 能否写入 notify_on_release — 前提条件
+//	CgroupProcsWritable     bool     // 能否写入 cgroup.procs — 触发逃逸的关键
+//	SubDirs                 []string // 能否在该子系统下创建子目录
+//}
+
+type CgroupInfo struct {
+	Version                int // 1 或 2
+	Subsystems             map[string]CgSubsystem
+	DevicesAllowWritable   bool   // cgroup v1 devices.allow 可写 → 挂载宿主磁盘
+	SubtreeControlWritable bool   // cgroup v2 的 subtree_control
+	UnifiedPath            string // v2 统一挂载点
+}
 type CgSubsystem struct {
 	Name                    string   // "memory", "cpu", "pids" 等
 	MountPath               string   // /sys/fs/cgroup/memory
@@ -102,14 +120,7 @@ type CgSubsystem struct {
 	NotifyOnReleaseWritable bool     // 能否写入 notify_on_release — 前提条件
 	CgroupProcsWritable     bool     // 能否写入 cgroup.procs — 触发逃逸的关键
 	SubDirs                 []string // 能否在该子系统下创建子目录
-}
-
-type CgroupInfo struct {
-	Version                int // 1 或 2
-	Subsystems             map[string]CgSubsystem
-	DevicesAllowWritable   bool   // cgroup v1 devices.allow 可写 → 挂载宿主磁盘
-	SubtreeControlWritable bool   // cgroup v2 的 subtree_control
-	UnifiedPath            string // v2 统一挂载点
+	SubtreeControlWritable  bool     // ← 加这行, cgroup v2 用
 }
 
 // ============================================================
@@ -207,6 +218,7 @@ type SecurityInfo struct {
 	ReadOnlyRootfs   bool            // 只读根文件系统
 	NoNewPrivs       bool            // PR_SET_NO_NEW_PRIVS
 	SyscallReachable map[string]bool // 实际 syscall 测试结果, key 是 syscall 名
+	SyscallBlocked   map[string]bool
 }
 
 // ============================================================
